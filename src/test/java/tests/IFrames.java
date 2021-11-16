@@ -8,7 +8,7 @@ import org.testng.Assert;
 public class IFrames extends BaseTest {
 
     @Test
-    public void framesTest() {
+    public void iFramesTest() {
         driver.get("http://the-internet.herokuapp.com/frames");
         WebElement iframeLink = driver.findElement(By.xpath("a[@href='/iframe']"));
         iframeLink.click();

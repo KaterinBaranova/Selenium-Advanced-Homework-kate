@@ -35,7 +35,6 @@ public class DynamicControls extends BaseTest {
         Assert.assertEquals(enableDisableButton.getText(), "Disable");
         enableDisableButton.click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("message")));
-        message = driver.findElement(By.id("message"));
         Assert.assertEquals(message.getText(), "It's disabled!");
         enableDisableButton.click();
         Assert.assertEquals(enableDisableButton.getText(), "Enable");
