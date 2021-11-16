@@ -16,5 +16,6 @@ public class IFrames extends BaseTest {
         driver.switchTo().frame(iFrame);
         WebElement text = driver.findElement(By.cssSelector("body[id='tinymce']"));
         Assert.assertEquals(text.getText(),"Your content goes here.");
+        driver.switchTo().defaultContent();
     }
 }
