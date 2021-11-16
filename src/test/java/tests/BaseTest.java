@@ -13,15 +13,16 @@ public class BaseTest {
 
 
     @BeforeClass(alwaysRun = true)
-    public void setup(){
+    public void setup() {
         WebDriverManager.chromedriver().setup();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         actionChains = new ActionChains(driver);
 
     }
+
     @AfterClass(alwaysRun = true)
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
-}
+    }
 }

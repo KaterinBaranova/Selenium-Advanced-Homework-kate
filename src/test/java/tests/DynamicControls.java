@@ -20,12 +20,10 @@ public class DynamicControls extends BaseTest {
         checkbox.click();
         WebElement removeButton = driver.findElement(By.xpath("//*[@id='checkbox-example']/descendant::button[@type='button']"));
         removeButton.click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("message")));
         wait.until(ExpectedConditions.invisibilityOf(checkbox));
         WebElement message = driver.findElement(By.id("message"));
         Assert.assertTrue(Boolean.parseBoolean(message.getText()), "It's gone!");
         removeButton.click(); // remove button becomes add button
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("message")));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("checkbox")));
         Assert.assertTrue(Boolean.parseBoolean(message.getText()), "It's back!");}
 
