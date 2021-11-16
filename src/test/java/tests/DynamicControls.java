@@ -27,7 +27,6 @@ public class DynamicControls extends BaseTest {
         removeButton.click(); // remove button becomes add button
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("message")));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("checkbox")));
-
         Assert.assertTrue(Boolean.parseBoolean(message.getText()), "It's back!");}
 
         @Test
