@@ -19,27 +19,30 @@ public class DynamicControls extends BaseTest {
         WebElement removeButton = driver.findElement(By.xpath("//*[@id='checkbox-example']/descendant::button[@type='button']"));
         removeButton.click();
         wait.until(ExpectedConditions.invisibilityOf(checkbox));
-        WebElement message = driver.findElement(By.id("message"));
-        Assert.assertEquals(message.getText(), "It's gone!");
+        wait.until(ExpectedConditions.textToBe(By.cssSelector("#message"), "It's gone!"));
         removeButton.click(); // remove button becomes add button
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("checkbox")));
-        Assert.assertEquals(message.getText(), "It's back!");}
+        wait.until(ExpectedConditions.textToBe(By.cssSelector("#message"), "It's back!"));
+        WebElement message = driver.findElement(By.id("message"));
+        Assert.assertEquals(message.getText(), "It's back!");
+    }
+
+
+
 
         @Test
         public void enableDisableTest() {
         driver.get("http://the-internet.herokuapp.com/dynamic_controls");
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement enableDisableButton = driver.findElement(By.xpath("//*[@id='input-example']/descendant::button[@type='button']"));
-        Assert.assertEquals(enableDisableButton.getText(), "Enable");
         enableDisableButton.click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("message")));
+        wait.until(ExpectedConditions.textToBe(By.xpath("//*[@id='input-example']/descendant::button[@type='button']"), "Disable"));
+        wait.until(ExpectedConditions.textToBe(By.cssSelector("#message"), "It's enabled!"));
+        enableDisableButton.click();
+        wait.until(ExpectedConditions.textToBe(By.xpath("//*[@id='input-example']/descendant::button[@type='button']"), "Enable"));
+        wait.until(ExpectedConditions.textToBe(By.cssSelector("#message"), "It's disabled!"));
         WebElement message = driver.findElement(By.id("message"));
-        Assert.assertEquals(message.getText(), "It's enabled!");
-        Assert.assertEquals(enableDisableButton.getText(), "Disable");
-        enableDisableButton.click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("message")));
         Assert.assertEquals(message.getText(), "It's disabled!");
-        enableDisableButton.click();
         Assert.assertEquals(enableDisableButton.getText(), "Enable");
     }
 }
