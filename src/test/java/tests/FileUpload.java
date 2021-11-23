@@ -16,7 +16,7 @@ public class FileUpload extends BaseTest {
     public void fileUploadTest() {
         driver.get("http://the-internet.herokuapp.com/upload");
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        File file = new File("/Users/ekaterinabaranova/Documents/Homework Kate_Selenium Advanced/src/test/main/resources/лиса и мальчик.jpg");
+        File file = new File("src/test/main/resources/лиса и мальчик.jpg");
         driver.findElement(By.id("file-upload")).sendKeys(file.getAbsolutePath());
         driver.findElement(By.id("file-submit")).click();
         wait.until(ExpectedConditions.textToBe(By.id("uploaded-files"), "лиса и мальчик.jpg"));
